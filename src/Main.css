@@ -1,0 +1,12 @@
+#bars {
+    border: 1px solid #4646ff;
+    margin: 25px auto;
+    width: 1000px;
+    height: 500px;
+    display: flex;
+}
+
+.bar {
+    background-color: blue;
+    width: 10px;
+}

@@ -2,7 +2,7 @@ import '../Main.css'
 
 function Bar(props) {
     const styles = {
-        height: props.value
+        height: props.value*5
     }
 
     return (

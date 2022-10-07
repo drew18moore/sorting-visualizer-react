@@ -1,20 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../Main.css'
 import Bar from './Bar';
 
 function Main() {
     const [data, setData] = useState({
-        num: 10,
+        num: 100,
         values: [12, 4, 59, 47, 94, 17]
     });
 
-    console.log(data.values);
+    useEffect(() => {
+        randomize();
+    }, [])
 
     const randomize = () => {
         setData(prevData => {
             return {
                 ...prevData,
-                values: [...new Array(data.num)].map(() => Math.round(Math.random() * 100))
+                values: [...new Array(data.num)].map(() => Math.floor(Math.random() * 100) + 1)
             }
         });
     }

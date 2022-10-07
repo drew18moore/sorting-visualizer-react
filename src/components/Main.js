@@ -16,6 +16,10 @@ function Main() {
             <div id="bars">
                 {barElements}
             </div>
+            <form id="buttons-form">
+                <button>Randomize</button>
+                <button>Sort</button>
+            </form>
         </main>
     );
 }

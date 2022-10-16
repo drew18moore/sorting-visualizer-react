@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../Main.css'
 import Bar from './Bar';
+import {bubbleSort} from '../SortingAlgorithms';
 
 function Main() {
     const [data, setData] = useState({
@@ -34,7 +35,7 @@ function Main() {
             </div>
             <form id="buttons-form">
                 <button type="button" onClick={randomize}>Randomize</button>
-                <button type="button">Sort</button>
+                <button type="button" onClick={() => bubbleSort(data.values)}>Sort</button>
             </form>
         </main>
     );

@@ -26,13 +26,27 @@ function Main() {
     }
 
     const bubbleSort = async() => {
+        console.log(data.values);
+        console.log("Bubble Sort");
         let arr = [...data.values];
+        let temp;
         
         for (let i = 0; i < arr.length; i++) {
-            
-            await sleep(1000);
+            for (let j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    temp = arr[j]
+                    arr[j] = arr[j+1]
+                    arr[j+1] = temp
+                    setData((prevData) => {
+                        return {
+                            ...prevData,
+                            values: arr
+                        }
+                    })
+                    await sleep(1);
+                } 
+            }
         }
-        
     }
 
     const barElements = data.values.map((val, i) => {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../Main.css'
 import Bar from './Bar';
-import {bubbleSort} from '../SortingAlgorithms';
 
 function Main() {
     const [data, setData] = useState({
@@ -22,6 +21,20 @@ function Main() {
         });
     }
 
+    const sleep = (ms) => {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    const bubbleSort = async() => {
+        let arr = [...data.values];
+        
+        for (let i = 0; i < arr.length; i++) {
+            
+            await sleep(1000);
+        }
+        
+    }
+
     const barElements = data.values.map((val, i) => {
         return (
             <Bar value={val} key={i}/>
@@ -35,7 +48,7 @@ function Main() {
             </div>
             <form id="buttons-form">
                 <button type="button" onClick={randomize}>Randomize</button>
-                <button type="button" onClick={() => bubbleSort(data.values)}>Sort</button>
+                <button type="button" onClick={bubbleSort}>Sort</button>
             </form>
         </main>
     );

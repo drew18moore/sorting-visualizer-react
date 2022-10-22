@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../Main.css'
 import Bar from './Bar';
 
-function Main() {
+function Main(props) {
     const [data, setData] = useState({
         num: 100,
         values: [12, 4, 59, 47, 94, 17]
@@ -23,6 +23,22 @@ function Main() {
 
     const sleep = (ms) => {
         return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    const sort = () => {
+        switch(props.algo) {
+            case "Quick Sort":
+                console.log("Performing Quick Sort");
+                break;
+            case "Merge Sort":
+                console.log("Performing Merge Sort");
+                break;
+            case "Bubble Sort":
+                console.log("Performing Bubble Sort");
+                bubbleSort();
+                break;
+                        
+        }
     }
 
     const bubbleSort = async() => {
@@ -62,7 +78,7 @@ function Main() {
             </div>
             <form id="buttons-form">
                 <button type="button" onClick={randomize}>Randomize</button>
-                <button type="button" onClick={bubbleSort}>Sort</button>
+                <button type="button" onClick={sort}>Sort</button>
             </form>
         </main>
     );

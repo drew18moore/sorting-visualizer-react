@@ -33,6 +33,7 @@ function Main(props) {
                 break;
             case "Selection Sort":
                 console.log("Performing Selection Sort");
+                selectionSort();
                 break;
             case "Quick Sort":
                 console.log("Performing Quick Sort");
@@ -45,9 +46,8 @@ function Main(props) {
     }
 
     const bubbleSort = async() => {
-        console.log(data.values);
-        console.log("Bubble Sort");
         let arr = [...data.values];
+        let test = [...arr].sort((a, b) => a - b);
         let temp;
         
         for (let i = 0; i < arr.length; i++) {
@@ -62,10 +62,50 @@ function Main(props) {
                             values: arr
                         }
                     })
-                    await sleep(1);
+                    await sleep(10);
                 } 
             }
         }
+        await console.log(arraysAreEqual(arr, test));
+    }
+
+    const selectionSort = async() => {
+        let arr = [...data.values];
+        let test = [...arr].sort((a, b) => a - b);
+        let temp;
+        let minIndex;
+
+        for (let i = 0; i < arr.length; i++) {
+            minIndex = i;
+            for (let j = i; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+            setData((prevData) => {
+                return {
+                    ...prevData,
+                    values: arr
+                }
+            })
+            await sleep(10);
+        }
+        // Test
+        await console.log(arraysAreEqual(arr, test));
+    }
+
+    const arraysAreEqual = (a, b) => {
+        if (a === b) return true;
+        if (a == null || b == null) return false;
+        if (a.length !== b.length) return false;
+
+        for (var i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) return false;
+        }
+        return true;
     }
 
     const barElements = data.values.map((val, i) => {

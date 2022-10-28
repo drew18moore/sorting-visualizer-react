@@ -27,15 +27,18 @@ function Main(props) {
 
     const sort = () => {
         switch(props.algo) {
+            case "Bubble Sort":
+                console.log("Performing Bubble Sort");
+                bubbleSort();
+                break;
+            case "Selection Sort":
+                console.log("Performing Selection Sort");
+                break;
             case "Quick Sort":
                 console.log("Performing Quick Sort");
                 break;
             case "Merge Sort":
                 console.log("Performing Merge Sort");
-                break;
-            case "Bubble Sort":
-                console.log("Performing Bubble Sort");
-                bubbleSort();
                 break;
                         
         }

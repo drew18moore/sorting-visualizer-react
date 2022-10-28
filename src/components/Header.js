@@ -4,9 +4,10 @@ import Select from 'react-select/';
 function Header(props) {
     const options = [
         {value: '', label: 'Choose an algorithm', isDisabled: true},
+        {value: 'Bubble Sort', label: 'Bubble Sort'},
+        {value: 'Selection Sort', label: 'Selection Sort'},
         {value: 'Quick Sort', label: 'Quick Sort'},
-        {value: 'Merge Sort', label: 'Merge Sort'},
-        {value: 'Bubble Sort', label: 'Bubble Sort'}
+        {value: 'Merge Sort', label: 'Merge Sort'}
     ]
     return (
         <nav>

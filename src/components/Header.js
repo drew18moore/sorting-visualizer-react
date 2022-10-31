@@ -16,8 +16,8 @@ function Header(props) {
             </div>
             <Select onChange={props.onChange} value={options.value} options={options} defaultValue={options[0]}/>
             <form id="buttons-form">
-                <button type='button' onClick={props.randomize}>Randomize</button>
-                <button type='button' onClick={props.sort}>Sort</button>
+                <button id='rand-btn' type='button' onClick={props.randomize}>Randomize</button>
+                <button id='sort-btn' type='button' onClick={props.sort}>Sort</button>
             </form>
         </nav>
     );

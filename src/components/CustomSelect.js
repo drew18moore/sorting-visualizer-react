@@ -12,6 +12,8 @@ function CustomSelect(props) {
     const styles = {
         control: styles => ({
             ...styles,
+            borderRadius: 5,
+            border: '1px solid gray',
             cursor: 'pointer'
         }),
         option: styles => ({

@@ -15,6 +15,10 @@ function Header(props) {
                 <h1>sorting-visualizer</h1>
             </div>
             <Select onChange={props.onChange} value={options.value} options={options} defaultValue={options[0]}/>
+            <form id="buttons-form">
+                <button type='button' onClick={props.randomize}>Randomize</button>
+                <button type='button' onClick={props.sort}>Sort</button>
+            </form>
         </nav>
     );
 }

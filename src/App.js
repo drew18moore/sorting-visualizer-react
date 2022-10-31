@@ -154,7 +154,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header algo={chosenAlgo} onChange={handleChange}/>
+      <Header algo={chosenAlgo} onChange={handleChange} randomize={randomize} sort={sort} />
       <Main vals={data.values} randomize={randomize} sort={sort}/>
     </div>
   );

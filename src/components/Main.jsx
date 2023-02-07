@@ -1,8 +1,8 @@
 import Bar from './Bar';
 
-const Main = (props) => {
+const Main = ({ values }) => {
 
-    const barElements = props.vals.map((val, i) => {
+    const barElements = values.map((val, i) => {
         return (
             <Bar value={val} key={i}/>
         )

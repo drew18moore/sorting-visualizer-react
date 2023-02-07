@@ -1,6 +1,6 @@
 import Select from "react-select/";
 
-const CustomSelect = (props) => {
+const CustomSelect = ({ onChange }) => {
     const options = [
         {value: '', label: 'Choose an algorithm', isDisabled: true},
         {value: 'Bubble Sort', label: 'Bubble Sort'},
@@ -23,7 +23,7 @@ const CustomSelect = (props) => {
     }
 
     return (
-        <Select styles={styles} onChange={props.onChange} value={options.value} options={options} defaultValue={options[0]} />
+        <Select styles={styles} onChange={onChange} value={options.value} options={options} defaultValue={options[0]} />
     )
 }
 

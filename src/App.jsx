@@ -154,7 +154,7 @@ const App = () => {
   return (
     <div className="App">
       <Header onChange={handleChange} randomize={randomize} sort={sort} />
-      <Main vals={data.values} randomize={randomize} sort={sort}/>
+      <Main values={data.values} randomize={randomize} sort={sort}/>
     </div>
   );
 }

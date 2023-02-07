@@ -1,15 +1,15 @@
 import CustomSelect from './CustomSelect';
 
-const Header = (props) => {
+const Header = ({ onChange, randomize, sort }) => {
     return (
         <nav>
             <div id='nav-logo'>
                 <h1>sorting-visualizer</h1>
             </div>
-            <CustomSelect onChange={props.onChange} />
+            <CustomSelect onChange={onChange} />
             <form id="buttons-form">
-                <button id='rand-btn' type='button' onClick={props.randomize}>Randomize</button>
-                <button id='sort-btn' type='button' onClick={props.sort}>Sort</button>
+                <button id='rand-btn' type='button' onClick={randomize}>Randomize</button>
+                <button id='sort-btn' type='button' onClick={sort}>Sort</button>
             </form>
         </nav>
     );

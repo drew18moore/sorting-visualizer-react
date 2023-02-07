@@ -1,4 +1,3 @@
-import '../Header.css';
 import CustomSelect from './CustomSelect';
 
 function Header(props) {

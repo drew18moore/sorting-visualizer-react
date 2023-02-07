@@ -1,4 +1,3 @@
-import '../Main.css'
 
 function Bar(props) {
     const styles = {

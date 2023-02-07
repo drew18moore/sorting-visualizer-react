@@ -1,4 +1,3 @@
-import '../Main.css'
 import Bar from './Bar';
 
 function Main(props) {

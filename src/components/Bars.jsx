@@ -10,7 +10,7 @@ const Main = ({ values }) => {
 
     return (
         <main>
-            <div id="bars">
+            <div className="bars">
                 {barElements}
             </div>
         </main>

@@ -15,17 +15,17 @@ nav {
   padding: 0 1rem;
 }
 
-#nav-logo h1 {
+.nav-logo h1 {
   color: white;
 }
 
-#buttons-form {
+.nav-btns {
   display: flex;
   gap: 1rem;
 }
 
-#rand-btn,
-#sort-btn {
+.randomize-btn,
+.sort-btn {
   cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem;
@@ -42,7 +42,7 @@ main {
   gap: 25px;
 }
 
-#bars {
+.bars {
   margin: 0 auto;
   width: 100%;
   height: calc(100vh - 4rem - 50px);

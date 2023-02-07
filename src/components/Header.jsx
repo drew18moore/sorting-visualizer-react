@@ -1,6 +1,6 @@
 import CustomSelect from './CustomSelect';
 
-function Header(props) {
+const Header = (props) => {
     return (
         <nav>
             <div id='nav-logo'>

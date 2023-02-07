@@ -1,6 +1,6 @@
 import Bar from './Bar';
 
-function Main(props) {
+const Main = (props) => {
 
     const barElements = props.vals.map((val, i) => {
         return (

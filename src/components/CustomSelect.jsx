@@ -1,6 +1,6 @@
 import Select from "react-select/";
 
-function CustomSelect(props) {
+const CustomSelect = (props) => {
     const options = [
         {value: '', label: 'Choose an algorithm', isDisabled: true},
         {value: 'Bubble Sort', label: 'Bubble Sort'},

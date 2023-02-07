@@ -1,7 +1,7 @@
 
-function Bar(props) {
+const Bar = ({ value }) => {
     const styles = {
-        height: `${props.value}%`
+        height: `${value}%`
     }
 
     return (

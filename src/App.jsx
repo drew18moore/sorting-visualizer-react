@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header'
 import Main from './components/Main'
 
-function App() {
+const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
   const [data, setData] = useState({
     num: 100,
@@ -59,7 +59,7 @@ function App() {
       }
   }
 
-  const bubbleSort = async() => {
+  const bubbleSort = async () => {
       let arr = [...data.values];
       let test = [...arr].sort((a, b) => a - b);
       let temp;
@@ -83,7 +83,7 @@ function App() {
       await console.log(arraysAreEqual(arr, test));
   }
 
-  const selectionSort = async() => {
+  const selectionSort = async () => {
       let arr = [...data.values];
       let test = [...arr].sort((a, b) => a - b);
       let temp;

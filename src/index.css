@@ -5,6 +5,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* HEADER STYLES */
 nav {
   background-color: #4646ff;

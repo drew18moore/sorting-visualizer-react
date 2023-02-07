@@ -7,6 +7,8 @@ const App = () => {
   const [numberOfValues, setNumberOfValues] = useState(100);
   const [values, setValues] = useState([]);
 
+  const canSort = chosenAlgo !== "";
+
   useEffect(() => {
     randomize();
   }, [])
@@ -130,7 +132,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header onChange={handleChange} randomize={randomize} sort={sort} />
+      <Header onChange={handleChange} randomize={randomize} sort={sort} canSort={canSort} />
       <Bars values={values} randomize={randomize} sort={sort}/>
     </div>
   );

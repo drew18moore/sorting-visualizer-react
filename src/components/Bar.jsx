@@ -1,7 +1,7 @@
 
 function Bar(props) {
     const styles = {
-        height: props.value*5
+        height: `${props.value}%`
     }
 
     return (

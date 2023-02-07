@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header'
-import Main from './components/Main'
+import Bars from './components/Bars'
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("")
@@ -131,7 +131,7 @@ const App = () => {
   return (
     <div className="App">
       <Header onChange={handleChange} randomize={randomize} sort={sort} />
-      <Main values={values} randomize={randomize} sort={sort}/>
+      <Bars values={values} randomize={randomize} sort={sort}/>
     </div>
   );
 }

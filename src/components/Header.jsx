@@ -1,13 +1,13 @@
 import { useState } from "react";
 import CustomSelect from "./CustomSelect";
 
-const Header = ({ onChange, randomize, sort, canSort }) => {
+const Header = ({ setChosenAlgo, randomize, sort, canSort }) => {
   return (
     <nav>
       <div className="nav-logo">
         <h1>sorting-visualizer</h1>
       </div>
-      <CustomSelect onChange={onChange} />
+      <CustomSelect onChange={(e) => setChosenAlgo(e.value)} />
       <div className="nav-btns">
         <button className="randomize-btn" type="button" onClick={randomize}>
           Randomize

@@ -51,14 +51,10 @@ const App = () => {
     }
   };
 
-  const handleChange = (event) => {
-    setChosenAlgo(event.value);
-  };
-
   return (
     <div className="App">
       <Header
-        onChange={handleChange}
+        setChosenAlgo={setChosenAlgo}
         randomize={randomize}
         sort={sort}
         canSort={canSort}

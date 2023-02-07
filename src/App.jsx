@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header'
 import Bars from './components/Bars'
+import bubbleSort from './algorithms/bubbleSort';
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("")
@@ -17,15 +18,11 @@ const App = () => {
     setValues([...new Array(numberOfValues)].map(() => Math.floor(Math.random() * 100) + 1));
   }
 
-  const sleep = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   const sort = () => {
       switch(chosenAlgo) {
           case "Bubble Sort":
               console.log("Performing Bubble Sort");
-              bubbleSort();
+              bubbleSort(values, setValues);
               break;
           case "Selection Sort":
               console.log("Performing Selection Sort");
@@ -46,25 +43,6 @@ const App = () => {
               break;
                       
       }
-  }
-
-  const bubbleSort = async () => {
-      let arr = [...values];
-      let test = [...arr].sort((a, b) => a - b);
-      let temp;
-      
-      for (let i = 0; i < arr.length; i++) {
-          for (let j = 0; j < arr.length - i - 1; j++) {
-              if (arr[j] > arr[j+1]) {
-                  temp = arr[j]
-                  arr[j] = arr[j+1]
-                  arr[j+1] = temp
-                  setValues([...arr])
-                  await sleep(10);
-              } 
-          }
-      }
-      await console.log(arraysAreEqual(arr, test));
   }
 
   const selectionSort = async () => {
@@ -113,17 +91,6 @@ const App = () => {
       }
 
       return [...result, ...leftArr, ...rightArr]
-  }
-
-  const arraysAreEqual = (a, b) => {
-      if (a === b) return true;
-      if (a == null || b == null) return false;
-      if (a.length !== b.length) return false;
-
-      for (var i = 0; i < a.length; ++i) {
-          if (a[i] !== b[i]) return false;
-      }
-      return true;
   }
 
   const handleChange = event => {

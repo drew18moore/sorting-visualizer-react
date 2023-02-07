@@ -1,9 +1,6 @@
-import sleep from "../utils/sleep";
-import arraysAreEqual from "../utils/arraysAreEqual";
-
-const bubbleSort = async (stateValues, setStateValues) => {
+const bubbleSort = (stateValues) => {
   let arr = [...stateValues];
-  let test = [...arr].sort((a, b) => a - b);
+  let moves = []
   let temp;
 
   for (let i = 0; i < arr.length; i++) {
@@ -12,12 +9,13 @@ const bubbleSort = async (stateValues, setStateValues) => {
         temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        setStateValues([...arr]);
-        await sleep(2);
+        moves.push([j, j+1, "SWAP"]);
+      } else {
+        moves.push([j, j+1, "NO SWAP"]);
       }
     }
   }
-  await console.log(arraysAreEqual(arr, test));
+  return moves;
 };
 
 export default bubbleSort;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Bars from "./components/Bars";
+import sleep from "./utils/sleep";
+import swap from "./utils/swap";
 import arraysAreEqual from "./utils/arraysAreEqual";
 import bubbleSort from "./algorithms/bubbleSort";
 import selectionSort from "./algorithms/selectionSort";
@@ -25,11 +27,26 @@ const App = () => {
     );
   };
 
+  const visualize = async (moves) => {
+    let arr = [...values]
+    console.log(arr)
+    for (let i = 0; i < moves.length; i++) {
+        if (moves[i][2] === "SWAP") {
+            swap(arr, moves[i][0], moves[i][1])
+            setValues([...arr])
+            await sleep(10)
+        }
+    }
+    console.log(arr);
+  }
+
   const sort = () => {
     switch (chosenAlgo) {
       case "Bubble Sort":
         console.log("Performing Bubble Sort");
-        bubbleSort(values, setValues);
+        const moves = bubbleSort(values);
+        console.log(moves);
+        visualize(moves)
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort");

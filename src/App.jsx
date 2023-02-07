@@ -3,23 +3,16 @@ import Header from './components/Header'
 import Main from './components/Main'
 
 const App = () => {
-  const [chosenAlgo, setChosenAlgo] = useState("");
-  const [data, setData] = useState({
-    num: 100,
-    values: []
-  })
+  const [chosenAlgo, setChosenAlgo] = useState("")
+  const [numberOfValues, setNumberOfValues] = useState(100);
+  const [values, setValues] = useState([]);
 
   useEffect(() => {
     randomize();
   }, [])
 
   const randomize = () => {
-    setData(prevData => {
-        return {
-            ...prevData,
-            values: [...new Array(data.num)].map(() => Math.floor(Math.random() * 100) + 1)
-        }
-    });
+    setValues([...new Array(numberOfValues)].map(() => Math.floor(Math.random() * 100) + 1));
   }
 
   const sleep = (ms) => {
@@ -42,25 +35,19 @@ const App = () => {
           case "Merge Sort":
               console.log("Performing Merge Sort");
               // Test
-              let test = [...data.values].sort((a, b) => a - b);
-              let result = mergeSort(data.values);
+              let test = [...values].sort((a, b) => a - b);
+              let result = mergeSort(values);
               console.log(arraysAreEqual(test, result));
 
               // TODO: properly animate merge sort
-              setData((prevData) => {
-                  return {
-                      ...prevData,
-                      values: result
-                  }
-              })
-              
+              setValues(result)
               break;
                       
       }
   }
 
   const bubbleSort = async () => {
-      let arr = [...data.values];
+      let arr = [...values];
       let test = [...arr].sort((a, b) => a - b);
       let temp;
       
@@ -70,12 +57,7 @@ const App = () => {
                   temp = arr[j]
                   arr[j] = arr[j+1]
                   arr[j+1] = temp
-                  setData((prevData) => {
-                      return {
-                          ...prevData,
-                          values: arr
-                      }
-                  })
+                  setValues([...arr])
                   await sleep(10);
               } 
           }
@@ -84,7 +66,7 @@ const App = () => {
   }
 
   const selectionSort = async () => {
-      let arr = [...data.values];
+      let arr = [...values];
       let test = [...arr].sort((a, b) => a - b);
       let temp;
       let minIndex;
@@ -99,12 +81,7 @@ const App = () => {
           temp = arr[i];
           arr[i] = arr[minIndex];
           arr[minIndex] = temp;
-          setData((prevData) => {
-              return {
-                  ...prevData,
-                  values: arr
-              }
-          })
+          setValues([...arr])
           await sleep(10);
       }
       // Test
@@ -154,7 +131,7 @@ const App = () => {
   return (
     <div className="App">
       <Header onChange={handleChange} randomize={randomize} sort={sort} />
-      <Main values={data.values} randomize={randomize} sort={sort}/>
+      <Main values={values} randomize={randomize} sort={sort}/>
     </div>
   );
 }

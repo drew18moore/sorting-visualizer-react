@@ -11,7 +11,7 @@ import mergeSort from "./algorithms/mergeSort";
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
   const [numberOfValues, setNumberOfValues] = useState(100);
-  const [values, setValues] = useState([]);
+  const [bars, setBars] = useState([]);
 
   const canSort = chosenAlgo !== "";
 
@@ -20,21 +20,24 @@ const App = () => {
   }, []);
 
   const randomize = () => {
-    setValues(
+    setBars(
       [...new Array(numberOfValues)].map(
-        () => Math.floor(Math.random() * 100) + 1
+        (bar) => ({
+            value: Math.floor(Math.random() * 100) + 1,
+            class: ""
+        })
       )
     );
   };
 
   const visualize = async (moves) => {
-    let arr = [...values]
+    let arr = [...bars]
     console.log(arr)
     for (let i = 0; i < moves.length; i++) {
         if (moves[i][2] === "SWAP") {
             swap(arr, moves[i][0], moves[i][1])
-            setValues([...arr])
-            await sleep(10)
+            setBars([...arr])
+            await sleep(2)
         }
     }
     console.log(arr);
@@ -44,13 +47,14 @@ const App = () => {
     switch (chosenAlgo) {
       case "Bubble Sort":
         console.log("Performing Bubble Sort");
+        const values = bars.map(bar => bar.value)
         const moves = bubbleSort(values);
         console.log(moves);
         visualize(moves)
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort");
-        selectionSort(values, setValues);
+        selectionSort(bars, setBars);
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");
@@ -58,12 +62,12 @@ const App = () => {
       case "Merge Sort":
         console.log("Performing Merge Sort");
         // Test
-        let test = [...values].sort((a, b) => a - b);
-        let result = mergeSort(values);
+        let test = [...bars].sort((a, b) => a - b);
+        let result = mergeSort(bars);
         console.log(arraysAreEqual(test, result));
 
         // TODO: properly animate merge sort
-        setValues(result);
+        setBars(result);
         break;
     }
   };
@@ -76,7 +80,7 @@ const App = () => {
         sort={sort}
         canSort={canSort}
       />
-      <Bars values={values} randomize={randomize} sort={sort} />
+      <Bars values={bars} randomize={randomize} sort={sort} />
     </div>
   );
 };

@@ -59,3 +59,7 @@ main {
   flex: auto;
   border-radius: 0 0 5px 5px;
 }
+
+.current {
+  background-color: red;
+}

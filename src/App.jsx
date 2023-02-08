@@ -12,6 +12,7 @@ const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
   const [numberOfValues, setNumberOfValues] = useState(10);
   const [bars, setBars] = useState([]);
+  const [speed, setSpeed] = useState(1);
 
   const canSort = chosenAlgo !== "";
 
@@ -37,9 +38,9 @@ const App = () => {
         if (moves[i][2] === "SWAP") {
             swap(arr, moves[i][0], moves[i][1])
             setBars([...arr])
-            await sleep(1000)
+            await sleep(speed)
         } else {
-          await sleep(1000)
+          await sleep(speed)
         }
     }
     console.log(arr);

@@ -1,4 +1,4 @@
-const selectionSort = (stateValues, setStateValues) => {
+const selectionSort = (stateValues) => {
   let arr = [...stateValues];
   let moves = [];
   let temp;

@@ -10,7 +10,7 @@ import mergeSort from "./algorithms/mergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
-  const [numberOfValues, setNumberOfValues] = useState(10);
+  const [numberOfValues, setNumberOfValues] = useState(100);
   const [bars, setBars] = useState([]);
   const [speed, setSpeed] = useState(1);
 
@@ -33,13 +33,22 @@ const App = () => {
 
   const visualize = async (moves) => {
     let arr = [...bars]
+    const barElements = document.getElementsByClassName("bar");
+    console.log(barElements);
     console.log(arr)
     for (let i = 0; i < moves.length; i++) {
+      barElements[moves[i][0]].classList.add("current");
+      barElements[moves[i][1]].classList.add("current");
+      await sleep(speed)
         if (moves[i][2] === "SWAP") {
+          barElements[moves[i][0]].classList.remove("current")
+          barElements[moves[i][1]].classList.remove("current")
             swap(arr, moves[i][0], moves[i][1])
             setBars([...arr])
             await sleep(speed)
         } else {
+          barElements[moves[i][0]].classList.remove("current")
+          barElements[moves[i][1]].classList.remove("current")
           await sleep(speed)
         }
     }

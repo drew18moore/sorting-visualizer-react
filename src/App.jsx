@@ -10,7 +10,7 @@ import mergeSort from "./algorithms/mergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
-  const [numberOfValues, setNumberOfValues] = useState(100);
+  const [numberOfValues, setNumberOfValues] = useState(10);
   const [bars, setBars] = useState([]);
 
   const canSort = chosenAlgo !== "";
@@ -37,24 +37,31 @@ const App = () => {
         if (moves[i][2] === "SWAP") {
             swap(arr, moves[i][0], moves[i][1])
             setBars([...arr])
-            await sleep(2)
+            await sleep(1000)
+        } else {
+          await sleep(1000)
         }
     }
     console.log(arr);
   }
 
   const sort = () => {
+    let values;
+    let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
         console.log("Performing Bubble Sort");
-        const values = bars.map(bar => bar.value)
-        const moves = bubbleSort(values);
+        values = bars.map(bar => bar.value)
+        moves = bubbleSort(values);
         console.log(moves);
         visualize(moves)
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort");
-        selectionSort(bars, setBars);
+        values = bars.map(bar => bar.value)
+        moves = selectionSort(values);
+        console.log(moves)
+        visualize(moves)
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");

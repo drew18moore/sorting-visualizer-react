@@ -1,9 +1,6 @@
-import sleep from "../utils/sleep";
-import arraysAreEqual from "../utils/arraysAreEqual";
-
-const selectionSort = async (stateValues, setStateValues) => {
+const selectionSort = (stateValues, setStateValues) => {
   let arr = [...stateValues];
-  let test = [...arr].sort((a, b) => a - b);
+  let moves = [];
   let temp;
   let minIndex;
 
@@ -11,17 +8,18 @@ const selectionSort = async (stateValues, setStateValues) => {
     minIndex = i;
     for (let j = i; j < arr.length; j++) {
       if (arr[j] < arr[minIndex]) {
+        moves.push([minIndex, j, "NEW MIN"]);
         minIndex = j;
+      } else {
+        moves.push([minIndex, j, "NO NEW MIN"]);
       }
     }
     temp = arr[i];
     arr[i] = arr[minIndex];
     arr[minIndex] = temp;
-    setStateValues([...arr]);
-    await sleep(10);
+    moves.push([i, minIndex, "SWAP"]);
   }
-  // Test
-  await console.log(arraysAreEqual(arr, test));
+  return moves;
 };
 
 export default selectionSort;

@@ -23,6 +23,26 @@ nav {
   color: white;
 }
 
+.range-slider {
+  display: flex;
+  position: relative;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.range-slider .hover-value {
+  border: 1px solid gray;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 110%;
+  padding: 0.5rem;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .nav-btns {
   display: flex;
   gap: 1rem;

@@ -60,7 +60,7 @@ const App = () => {
     let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
-        console.log("Performing Bubble Sort");
+        console.log("Performing Bubble Sort", speed);
         values = bars.map(bar => bar.value)
         moves = bubbleSort(values);
         console.log(moves);
@@ -96,6 +96,7 @@ const App = () => {
         randomize={randomize}
         sort={sort}
         canSort={canSort}
+        setSpeed={setSpeed}
       />
       <Bars values={bars} randomize={randomize} sort={sort} />
     </div>

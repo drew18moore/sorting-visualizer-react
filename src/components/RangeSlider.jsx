@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-const RangeSlider = () => {
+const RangeSlider = ({ setSpeed }) => {
   const [value, setValue] = useState(50);
-  const [showValueHover, setShowValueHover] = useState(true);
+  const [showValueHover, setShowValueHover] = useState(false);
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    console.log(e.target.value);
+    setSpeed(e.target.value);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Header from "./components/Header";
 import Bars from "./components/Bars";
 import sleep from "./utils/sleep";
@@ -12,7 +12,9 @@ const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
   const [numberOfValues, setNumberOfValues] = useState(100);
   const [bars, setBars] = useState([]);
-  const [speed, setSpeed] = useState(1);
+
+  const [speed, setSpeed] = useState(50);
+  const delay = useMemo(() => (-999 / 99) * speed + 1010, [speed])
 
   const canSort = chosenAlgo !== "";
 
@@ -31,7 +33,7 @@ const App = () => {
     );
   };
 
-  const visualize = async (moves) => {
+  const visualize = async (moves, timeDelay) => {
     let arr = [...bars]
     const barElements = document.getElementsByClassName("bar");
     console.log(barElements);
@@ -39,17 +41,17 @@ const App = () => {
     for (let i = 0; i < moves.length; i++) {
       barElements[moves[i][0]].classList.add("current");
       barElements[moves[i][1]].classList.add("current");
-      await sleep(speed)
+      await sleep(timeDelay)
         if (moves[i][2] === "SWAP") {
           barElements[moves[i][0]].classList.remove("current")
           barElements[moves[i][1]].classList.remove("current")
             swap(arr, moves[i][0], moves[i][1])
             setBars([...arr])
-            await sleep(speed)
+            await sleep(timeDelay)
         } else {
           barElements[moves[i][0]].classList.remove("current")
           barElements[moves[i][1]].classList.remove("current")
-          await sleep(speed)
+          await sleep(timeDelay)
         }
     }
     console.log(arr);
@@ -60,11 +62,11 @@ const App = () => {
     let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
-        console.log("Performing Bubble Sort", speed);
+        console.log("Performing Bubble Sort", delay);
         values = bars.map(bar => bar.value)
         moves = bubbleSort(values);
         console.log(moves);
-        visualize(moves)
+        visualize(moves, delay)
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort");

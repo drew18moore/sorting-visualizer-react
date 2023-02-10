@@ -24,12 +24,20 @@ nav {
 }
 
 .range-slider {
-  display: flex;
-  position: relative;
   background-color: white;
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid gray;
+}
+
+.range-slider label {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.range-slider .slider-container {
+  display: flex;
+  position: relative;
 }
 
 .range-slider .hover-value {

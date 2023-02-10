@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const RangeSlider = ({ label, setState, defaultValue }) => {
+const RangeSlider = ({ label, setState, defaultValue, minValue, maxValue }) => {
   const [value, setValue] = useState(defaultValue);
   const [showValueHover, setShowValueHover] = useState(false);
 
@@ -20,8 +20,8 @@ const RangeSlider = ({ label, setState, defaultValue }) => {
         <div className="slider-container">
           <input
             type="range"
-            min={1}
-            max={100}
+            min={minValue}
+            max={maxValue}
             value={value}
             onChange={handleChange}
             onMouseEnter={() => setShowValueHover(true)}

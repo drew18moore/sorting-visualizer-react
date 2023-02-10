@@ -10,7 +10,7 @@ import mergeSort from "./algorithms/mergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
-  const [numberOfBars, setNumberOfBars] = useState(100);
+  const [numberOfBars, setNumberOfBars] = useState(50);
   const [bars, setBars] = useState([]);
 
   const [speed, setSpeed] = useState(50);
@@ -20,10 +20,9 @@ const App = () => {
 
   useEffect(() => {
     randomize();
-  }, []);
+  }, [numberOfBars]);
 
   const randomize = () => {
-    console.log(numberOfBars);
     setBars(
       [...new Array(numberOfBars)].map(
         (bar) => ({

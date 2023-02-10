@@ -9,8 +9,8 @@ const Header = ({ setChosenAlgo, randomize, sort, canSort, setSpeed, setNumberOf
         <h1>sorting-visualizer</h1>
       </div>
       <CustomSelect onChange={(e) => setChosenAlgo(e.value)} />
-      <RangeSlider label={"Speed"} setState={setSpeed} defaultValue={50} />
-      <RangeSlider label={"Size"} setState={setNumberOfBars} defaultValue={50} />
+      <RangeSlider label={"Speed"} setState={setSpeed} defaultValue={50} minValue={1} maxValue={100} />
+      <RangeSlider label={"Size"} setState={setNumberOfBars} defaultValue={50} minValue={5} maxValue={100} />
       <div className="nav-btns">
         <button className="randomize-btn" type="button" onClick={randomize}>
           Randomize

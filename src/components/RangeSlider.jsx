@@ -6,7 +6,7 @@ const RangeSlider = ({ setSpeed }) => {
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    setSpeed(e.target.value);
+    setSpeed((-999/99) * e.target.value + 1010);
   };
 
   return (

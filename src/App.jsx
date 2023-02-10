@@ -10,7 +10,7 @@ import mergeSort from "./algorithms/mergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
-  const [numberOfValues, setNumberOfValues] = useState(100);
+  const [numberOfBars, setNumberOfBars] = useState(100);
   const [bars, setBars] = useState([]);
 
   const [speed, setSpeed] = useState(50);
@@ -23,8 +23,9 @@ const App = () => {
   }, []);
 
   const randomize = () => {
+    console.log(numberOfBars);
     setBars(
-      [...new Array(numberOfValues)].map(
+      [...new Array(numberOfBars)].map(
         (bar) => ({
             value: Math.floor(Math.random() * 100) + 1,
             class: ""
@@ -62,18 +63,18 @@ const App = () => {
     let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
-        console.log("Performing Bubble Sort", delay);
+        console.log("Performing Bubble Sort", delay, numberOfBars);
         values = bars.map(bar => bar.value)
         moves = bubbleSort(values);
         console.log(moves);
         visualize(moves, delay)
         break;
       case "Selection Sort":
-        console.log("Performing Selection Sort");
+        console.log("Performing Selection Sort", delay, numberOfBars);
         values = bars.map(bar => bar.value)
         moves = selectionSort(values);
         console.log(moves)
-        visualize(moves)
+        visualize(moves, delay)
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");
@@ -99,6 +100,7 @@ const App = () => {
         sort={sort}
         canSort={canSort}
         setSpeed={setSpeed}
+        setNumberOfBars={setNumberOfBars}
       />
       <Bars values={bars} randomize={randomize} sort={sort} />
     </div>

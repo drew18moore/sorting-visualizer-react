@@ -9,8 +9,8 @@ const RangeSlider = ({ label, setState, defaultValue }) => {
   }, [])
 
   const handleChange = (e) => {
-    setValue(e.target.value);
-    setState(e.target.value);
+    setValue(Number(e.target.value));
+    setState(Number(e.target.value));
   };
 
   return (

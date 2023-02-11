@@ -12,6 +12,7 @@ const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
   const [numberOfBars, setNumberOfBars] = useState(50);
   const [bars, setBars] = useState([]);
+  const [isRunning, setIsRunning] = useState(false);
 
   const [speed, setSpeed] = useState(50);
   const delay = useMemo(() => (-999 / 99) * speed + 1010, [speed])
@@ -57,7 +58,8 @@ const App = () => {
     console.log(arr);
   }
 
-  const sort = () => {
+  const sort = async () => {
+    setIsRunning(true);
     let values;
     let moves;
     switch (chosenAlgo) {
@@ -66,14 +68,14 @@ const App = () => {
         values = bars.map(bar => bar.value)
         moves = bubbleSort(values);
         console.log(moves);
-        visualize(moves, delay)
+        await visualize(moves, delay)
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort", delay, numberOfBars);
         values = bars.map(bar => bar.value)
         moves = selectionSort(values);
         console.log(moves)
-        visualize(moves, delay)
+        await visualize(moves, delay)
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");
@@ -89,6 +91,7 @@ const App = () => {
         setBars(result);
         break;
     }
+    setIsRunning(false);
   };
 
   return (
@@ -100,6 +103,7 @@ const App = () => {
         canSort={canSort}
         setSpeed={setSpeed}
         setNumberOfBars={setNumberOfBars}
+        isRunning={isRunning}
       />
       <Bars values={bars} randomize={randomize} sort={sort} />
     </div>

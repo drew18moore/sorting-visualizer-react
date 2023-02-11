@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const RangeSlider = ({ label, setState, defaultValue, minValue, maxValue }) => {
+const RangeSlider = ({ label, setState, defaultValue, minValue, maxValue, disabled }) => {
   const [value, setValue] = useState(defaultValue);
   const [showValueHover, setShowValueHover] = useState(false);
 
@@ -26,6 +26,7 @@ const RangeSlider = ({ label, setState, defaultValue, minValue, maxValue }) => {
             onChange={handleChange}
             onMouseEnter={() => setShowValueHover(true)}
             onMouseLeave={() => setShowValueHover(false)}
+            disabled={disabled}
           />
           {showValueHover && <div className="hover-value">{value}</div>}
         </div>

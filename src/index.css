@@ -5,6 +5,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button, .range-slider {
+  background-color: white;
+}
+
 button:disabled {
   cursor: not-allowed;
 }
@@ -24,7 +28,6 @@ nav {
 }
 
 .range-slider {
-  background-color: white;
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid gray;

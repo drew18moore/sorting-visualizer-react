@@ -15,7 +15,7 @@ const App = () => {
   const [isRunning, setIsRunning] = useState(false);
 
   const [speed, setSpeed] = useState(50);
-  const delay = useMemo(() => (-999 / 99) * speed + 1010, [speed])
+  const delay = useMemo(() => (-999 / 99) * speed + 1010, [speed]);
 
   const canSort = chosenAlgo !== "";
 
@@ -26,56 +26,50 @@ const App = () => {
   const randomize = () => {
     setBars(
       [...new Array(numberOfBars)].map(
-        (bar) => ({
-            value: Math.floor(Math.random() * 100) + 1,
-            class: ""
-        })
+        () => Math.floor(Math.random() * 100) + 1
       )
     );
   };
 
   const visualize = async (moves, timeDelay) => {
-    let arr = [...bars]
+    let arr = [...bars];
     const barElements = document.getElementsByClassName("bar");
     console.log(barElements);
-    console.log(arr)
+    console.log(arr);
     for (let i = 0; i < moves.length; i++) {
       barElements[moves[i][0]].classList.add("current");
       barElements[moves[i][1]].classList.add("current");
-      await sleep(timeDelay)
-        if (moves[i][2] === "SWAP") {
-          barElements[moves[i][0]].classList.remove("current")
-          barElements[moves[i][1]].classList.remove("current")
-            swap(arr, moves[i][0], moves[i][1])
-            setBars([...arr])
-            await sleep(timeDelay)
-        } else {
-          barElements[moves[i][0]].classList.remove("current")
-          barElements[moves[i][1]].classList.remove("current")
-          await sleep(timeDelay)
-        }
+      await sleep(timeDelay);
+      if (moves[i][2] === "SWAP") {
+        barElements[moves[i][0]].classList.remove("current");
+        barElements[moves[i][1]].classList.remove("current");
+        swap(arr, moves[i][0], moves[i][1]);
+        setBars([...arr]);
+        await sleep(timeDelay);
+      } else {
+        barElements[moves[i][0]].classList.remove("current");
+        barElements[moves[i][1]].classList.remove("current");
+        await sleep(timeDelay);
+      }
     }
     console.log(arr);
-  }
+  };
 
   const sort = async () => {
     setIsRunning(true);
-    let values;
     let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
         console.log("Performing Bubble Sort", delay, numberOfBars);
-        values = bars.map(bar => bar.value)
-        moves = bubbleSort(values);
+        moves = bubbleSort(bars);
         console.log(moves);
-        await visualize(moves, delay)
+        await visualize(moves, delay);
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort", delay, numberOfBars);
-        values = bars.map(bar => bar.value)
-        moves = selectionSort(values);
-        console.log(moves)
-        await visualize(moves, delay)
+        moves = selectionSort(bars);
+        console.log(moves);
+        await visualize(moves, delay);
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");

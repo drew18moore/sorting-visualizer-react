@@ -1,11 +1,11 @@
 
 const Bar = ({ value }) => {
     const styles = {
-        height: `${value.value}%`
+        height: `${value}%`
     }
 
     return (
-        <div style={styles} className={`bar ${value.class}`}></div>
+        <div style={styles} className={`bar`}></div>
     )
 }
 

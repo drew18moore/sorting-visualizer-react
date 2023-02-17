@@ -5,7 +5,6 @@ const CustomSelect = ({ onChange, disabled }) => {
         {value: '', label: 'Choose an algorithm', isDisabled: true},
         {value: 'Bubble Sort', label: 'Bubble Sort'},
         {value: 'Selection Sort', label: 'Selection Sort'},
-        {value: 'Quick Sort', label: 'Quick Sort'},
         {value: 'Merge Sort', label: 'Merge Sort'}
     ]
 

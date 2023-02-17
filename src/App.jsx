@@ -42,9 +42,6 @@ const App = () => {
         moves = selectionSort(bars);
         await visualizeSelectionSort(moves, delay, bars, setBars);
         break;
-      case "Quick Sort":
-        console.log("Performing Quick Sort");
-        break;
       case "Merge Sort":
         console.log("Performing Merge Sort");
         moves = mergeSort(bars);

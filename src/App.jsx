@@ -3,11 +3,9 @@ import Header from "./components/Header";
 import Bars from "./components/Bars";
 import sleep from "./utils/sleep";
 import swap from "./utils/swap";
-import arraysAreEqual from "./utils/arraysAreEqual";
 import bubbleSort from "./algorithms/bubbleSort";
 import selectionSort from "./algorithms/selectionSort";
-import mergeSort from "./algorithms/mergeSort";
-import newMergeSort, { visualizeMergeSort } from "./algorithms/newMergeSort";
+import mergeSort, { visualizeMergeSort } from "./algorithms/mergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
@@ -75,7 +73,7 @@ const App = () => {
         break;
       case "Merge Sort":
         console.log("Performing Merge Sort");
-        moves = newMergeSort(bars);
+        moves = mergeSort(bars);
         await visualizeMergeSort(moves, delay, bars, setBars);
         break;
     }

@@ -1,10 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import Header from "./components/Header";
 import Bars from "./components/Bars";
-import sleep from "./utils/sleep";
-import swap from "./utils/swap";
-import bubbleSort from "./algorithms/bubbleSort";
-import selectionSort from "./algorithms/selectionSort";
+import bubbleSort, { visualizeBubbleSort } from "./algorithms/bubbleSort";
+import selectionSort, { visualizeSelectionSort } from "./algorithms/selectionSort";
 import mergeSort, { visualizeMergeSort } from "./algorithms/mergeSort";
 
 const App = () => {
@@ -30,30 +28,6 @@ const App = () => {
     );
   };
 
-  const visualize = async (moves, timeDelay) => {
-    let arr = [...bars];
-    const barElements = document.getElementsByClassName("bar");
-    console.log(barElements);
-    console.log(arr);
-    for (let i = 0; i < moves.length; i++) {
-      barElements[moves[i][0]].classList.add("current");
-      barElements[moves[i][1]].classList.add("current");
-      await sleep(timeDelay);
-      if (moves[i][2] === "SWAP") {
-        barElements[moves[i][0]].classList.remove("current");
-        barElements[moves[i][1]].classList.remove("current");
-        swap(arr, moves[i][0], moves[i][1]);
-        setBars([...arr]);
-        await sleep(timeDelay);
-      } else {
-        barElements[moves[i][0]].classList.remove("current");
-        barElements[moves[i][1]].classList.remove("current");
-        await sleep(timeDelay);
-      }
-    }
-    console.log(arr);
-  };
-
   const sort = async () => {
     setIsRunning(true);
     let moves;
@@ -61,12 +35,12 @@ const App = () => {
       case "Bubble Sort":
         console.log("Performing Bubble Sort");
         moves = bubbleSort(bars);
-        await visualize(moves, delay);
+        await visualizeBubbleSort(moves, delay, bars, setBars);
         break;
       case "Selection Sort":
         console.log("Performing Selection Sort");
         moves = selectionSort(bars);
-        await visualize(moves, delay);
+        await visualizeSelectionSort(moves, delay, bars, setBars);
         break;
       case "Quick Sort":
         console.log("Performing Quick Sort");

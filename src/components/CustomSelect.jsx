@@ -22,7 +22,7 @@ const CustomSelect = ({ onChange, disabled }) => {
     }
 
     return (
-        <Select styles={styles} onChange={onChange} value={options.value} options={options} defaultValue={options[0]} isDisabled={disabled} />
+        <Select styles={styles} onChange={onChange} value={options.value} options={options} defaultValue={options[0]} isDisabled={disabled} isSearchable={false} />
     )
 }
 

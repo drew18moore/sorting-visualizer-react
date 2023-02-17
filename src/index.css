@@ -14,17 +14,24 @@ button:disabled {
 }
 
 /* HEADER STYLES */
-nav {
+header {
+  display: flex;
   background-color: #4646ff;
   height: 4rem;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
 }
+nav {
+  background-color: #4646ff;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
 .nav-logo h1 {
   color: white;
+  font-size: 1.5rem;
 }
 
 .range-slider {
@@ -56,7 +63,7 @@ nav {
 
 .nav-btns {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
 }
 
 .randomize-btn,
@@ -93,4 +100,17 @@ main {
 
 .current {
   background-color: red;
+}
+
+@media (max-width: 950px) {
+  nav {
+    position: fixed;
+    inset: 0 0 0 30%;
+    background-color: #4646ff;
+    height: auto;
+    flex-direction: column;
+    justify-content:flex-start;
+    gap: 15px;
+    padding-top: 10rem;
+  }
 }

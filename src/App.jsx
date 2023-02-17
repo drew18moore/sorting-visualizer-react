@@ -61,15 +61,13 @@ const App = () => {
     let moves;
     switch (chosenAlgo) {
       case "Bubble Sort":
-        console.log("Performing Bubble Sort", delay, numberOfBars);
+        console.log("Performing Bubble Sort");
         moves = bubbleSort(bars);
-        console.log(moves);
         await visualize(moves, delay);
         break;
       case "Selection Sort":
-        console.log("Performing Selection Sort", delay, numberOfBars);
+        console.log("Performing Selection Sort");
         moves = selectionSort(bars);
-        console.log(moves);
         await visualize(moves, delay);
         break;
       case "Quick Sort":
@@ -78,15 +76,7 @@ const App = () => {
       case "Merge Sort":
         console.log("Performing Merge Sort");
         moves = newMergeSort(bars);
-        console.log(moves);
         await visualizeMergeSort(moves, delay, bars, setBars);
-        // Test
-        // let test = [...bars].sort((a, b) => a - b);
-        // let result = mergeSort(bars);
-        // console.log(arraysAreEqual(test, result));
-
-        // // TODO: properly animate merge sort
-        // setBars(result);
         break;
     }
     setIsRunning(false);

@@ -1,13 +1,11 @@
 import sleep from "../utils/sleep";
 
 const newMergeSort = (stateValues) => {
-  console.log("INITIAL:", stateValues);
   if (stateValues.length <= 1) return stateValues;
   const moves = [];
   let arr = [...stateValues];
-  const arrCopy = arr.slice();
+  const arrCopy = [...stateValues];
   split(arr, 0, arr.length - 1, arrCopy, moves);
-  console.log("FINAL:", arr);
   return moves;
 };
 
@@ -47,8 +45,6 @@ const merge = (arr, start, mid, end, arrCopy, moves) => {
 
 export const visualizeMergeSort = async (moves, timeDelay, bars, setBars) => {
   let arr = [...bars];
-
-  console.log(arr);
   for (let i = 0; i < moves.length; i++) {
     const barElements = document.getElementsByClassName("bar");
     if (moves[i][2] === "CURRENT") {
@@ -59,7 +55,6 @@ export const visualizeMergeSort = async (moves, timeDelay, bars, setBars) => {
       barElements[moves[i][1]].classList.remove("current");
       await sleep(timeDelay);
     } else if (moves[i][2] === "SET_VALUE") {
-      // barElements[moves[i][0]].classList.add("change");
       arr[moves[i][0]] = moves[i][1];
       setBars([...arr]);
       await sleep(timeDelay);

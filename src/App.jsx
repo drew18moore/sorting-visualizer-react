@@ -7,6 +7,7 @@ import arraysAreEqual from "./utils/arraysAreEqual";
 import bubbleSort from "./algorithms/bubbleSort";
 import selectionSort from "./algorithms/selectionSort";
 import mergeSort from "./algorithms/mergeSort";
+import newMergeSort, { visualizeMergeSort } from "./algorithms/newMergeSort";
 
 const App = () => {
   const [chosenAlgo, setChosenAlgo] = useState("");
@@ -76,13 +77,16 @@ const App = () => {
         break;
       case "Merge Sort":
         console.log("Performing Merge Sort");
+        moves = newMergeSort(bars);
+        console.log(moves);
+        await visualizeMergeSort(moves, delay, bars, setBars);
         // Test
-        let test = [...bars].sort((a, b) => a - b);
-        let result = mergeSort(bars);
-        console.log(arraysAreEqual(test, result));
+        // let test = [...bars].sort((a, b) => a - b);
+        // let result = mergeSort(bars);
+        // console.log(arraysAreEqual(test, result));
 
-        // TODO: properly animate merge sort
-        setBars(result);
+        // // TODO: properly animate merge sort
+        // setBars(result);
         break;
     }
     setIsRunning(false);

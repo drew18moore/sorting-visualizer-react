@@ -11,12 +11,21 @@ const Header = ({
   setNumberOfBars,
   isRunning,
 }) => {
+  const [showHamburgerNav, setShowHamburgerNav] = useState(false);
+
   return (
     <header>
       <div className="nav-logo">
         <h1>sorting-visualizer</h1>
       </div>
-      <nav>
+      <button className="hamburger-icon" onClick={() => setShowHamburgerNav(prev => !prev)}>
+        <svg viewBox="0 0 100 70" width="40" height="30">
+          <rect width="100" height="10" rx="10"></rect>
+          <rect y="30" width="100" height="10" rx="10"></rect>
+          <rect y="60" width="100" height="10" rx="10"></rect>
+        </svg>
+      </button>
+      <nav className={showHamburgerNav && `show-hamburger-nav`}>
         <CustomSelect
           onChange={(e) => setChosenAlgo(e.value)}
           disabled={isRunning}
@@ -49,7 +58,10 @@ const Header = ({
           <button
             className="sort-btn"
             type="button"
-            onClick={sort}
+            onClick={() => {
+              setShowHamburgerNav(false);
+              sort();
+            }}
             disabled={!canSort}
           >
             Sort

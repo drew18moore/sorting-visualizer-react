@@ -34,6 +34,26 @@ nav {
   font-size: 1.5rem;
 }
 
+.hamburger-icon {
+  z-index: 9999;
+  display: none;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit
+}
+
+.hamburger-icon svg {
+  /* background-color: black; */
+  fill: white;
+  stroke: white;
+  width: 2rem;
+  vertical-align: middle;
+}
+
 .range-slider {
   padding: 0.5rem;
   border-radius: 5px;
@@ -102,7 +122,7 @@ main {
   background-color: red;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1020px) {
   nav {
     position: fixed;
     inset: 0 0 0 30%;
@@ -112,5 +132,15 @@ main {
     justify-content:flex-start;
     gap: 15px;
     padding-top: 10rem;
+    transform: translate(100%);
+    transition: transform 350ms ease-out;
+  }
+
+  .hamburger-icon {
+    display: block;
+  }
+
+  .show-hamburger-nav {
+    transform: translate(0%);
   }
 }

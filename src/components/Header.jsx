@@ -25,7 +25,7 @@ const Header = ({
           <rect y="60" width="100" height="10" rx="10"></rect>
         </svg>
       </button>
-      <nav className={showHamburgerNav && `show-hamburger-nav`}>
+      <nav className={showHamburgerNav ? `show-hamburger-nav` : ''}>
         <CustomSelect
           onChange={(e) => setChosenAlgo(e.value)}
           disabled={isRunning}

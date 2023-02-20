@@ -41,10 +41,11 @@ const Header = ({
         <RangeSlider
           label={"Size"}
           setState={setNumberOfBars}
-          defaultValue={50}
+          defaultValue={29}
           minValue={5}
           maxValue={100}
           disabled={isRunning}
+          sliderTestId={"size-slider"}
         />
         <div className="nav-btns">
           <button

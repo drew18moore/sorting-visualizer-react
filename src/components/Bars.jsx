@@ -1,3 +1,4 @@
+import React from "react";
 import Bar from './Bar';
 
 const Main = ({ values }) => {
@@ -14,7 +15,7 @@ const Main = ({ values }) => {
 
     return (
         <main>
-            <div className="bars" style={styles}>
+            <div data-testid="bars" className="bars" style={styles}>
                 {barElements}
             </div>
         </main>

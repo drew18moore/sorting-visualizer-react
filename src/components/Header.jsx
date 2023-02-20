@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import CustomSelect from "./CustomSelect";
 import RangeSlider from "./RangeSlider";
 

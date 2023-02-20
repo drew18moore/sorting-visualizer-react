@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Header from "./Header";
 import Bars from "./Bars";
 import bubbleSort, { visualizeBubbleSort } from "../algorithms/bubbleSort";
